@@ -20,6 +20,10 @@ func init() {
 	flag.StringVar(&startDir, "d", ".", "starting directory")
 	flag.StringVar(&format, "f", "txt", "output format (txt or json)")
 	flag.BoolVar(&print, "p", false, "print to console")
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage: %s [options]\n\nOptions:\n", os.Args[0])
+		flag.PrintDefaults()
+	}
 	flag.Parse()
 }
 
@@ -75,4 +79,3 @@ func walkDir(path string, level int, prefix string, w io.Writer) {
 		}
 	}
 }
-
