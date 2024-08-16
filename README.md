@@ -1,6 +1,6 @@
 # Directory-Tree-Generator
 
-This Go program generates a directory tree in either text or JSON format. 
+This Go program generates a directory tree in text or JSON format. 
 
 ## Command-Line Options
 
