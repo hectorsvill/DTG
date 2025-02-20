@@ -2,7 +2,7 @@
 PLATFORMS := windows/amd64 linux/amd64 darwin/amd64
 
 # Output file name
-OUTPUT_FILE := dir_tree.zip
+OUTPUT_FILE := dtg.zip
 
 # Temporary directory for binary files
 TEMP_DIR := .bin
@@ -15,7 +15,7 @@ build: $(PLATFORMS)
 $(PLATFORMS):
 	$(eval GOOS=$(word 1,$(subst /, ,$@)))
 	$(eval GOARCH=$(word 2,$(subst /, ,$@)))
-	GOOS=$(GOOS) GOARCH=$(GOARCH) go build -o $(TEMP_DIR)/dir_tree-$(GOOS)-$(GOARCH)
+	GOOS=$(GOOS) GOARCH=$(GOARCH) go build -o $(TEMP_DIR)/dtg-$(GOOS)-$(GOARCH)
 
 # Create the temporary directory
 $(TEMP_DIR):
