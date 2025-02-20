@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 )
@@ -53,7 +52,7 @@ func main() {
 }
 
 func walkDirJSON(path string, parent *DirEntry) {
-	files, _ := ioutil.ReadDir(path)
+	files, _ := os.ReadDir(path)
 	for _, file := range files {
 		entry := &DirEntry{Name: file.Name(), IsDir: file.IsDir()}
 		parent.Entries = append(parent.Entries, entry)
@@ -64,7 +63,7 @@ func walkDirJSON(path string, parent *DirEntry) {
 }
 
 func walkDir(path string, level int, prefix string, w io.Writer) {
-	files, _ := ioutil.ReadDir(path)
+	files, _ := os.ReadDir(path)
 	for i, file := range files {
 		if i == len(files)-1 {
 			fmt.Fprintf(w, "%s└── %s\n", prefix, file.Name())
