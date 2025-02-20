@@ -33,19 +33,19 @@ type DirEntry struct {
 }
 
 func main() {
+	fileName := "dtg"
 	if print || (format == "" && startDir == "." && !print) {
 		walkDir(startDir, 0, "", os.Stdout)
 	} else if format == "json" {
 		root := &DirEntry{Name: startDir, IsDir: true}
 		walkDirJSON(startDir, root)
-
-		f, _ := os.Create("dir_tree.json")
+		f, _ := os.Create(fileName + ".json")
 		defer f.Close()
 		enc := json.NewEncoder(f)
 		enc.SetIndent("", "  ")
 		enc.Encode(root)
 	} else {
-		f, _ := os.Create("dir_tree.txt")
+		f, _ := os.Create(fileName + ".txt")
 		defer f.Close()
 		walkDir(startDir, 0, "", f)
 	}
